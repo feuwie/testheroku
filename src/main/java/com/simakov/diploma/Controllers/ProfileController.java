@@ -74,7 +74,6 @@ import io.reactivex.subjects.PublishSubject;
 import io.reactivex.subjects.ReplaySubject;
 import io.reactivex.subjects.Subject;
 
-@RequestMapping("/api")
 @CrossOrigin(origins = "*")
 @RestController
 public class ProfileController {
