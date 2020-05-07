@@ -1,0 +1,5 @@
+<span *ngIf="model.currencyRange" style="float: left;">от {{model.filterValue[0] | format}} ₽</span>
+<span *ngIf="model.currencyRange" style="float: right;">&nbsp;до {{model.filterValue[1] | format }} ₽</span>
+<div style="height: 4px; clear: both;"></div>
+<p-slider [(ngModel)]="model.filterValue" [range]="true" [min]="model.min" [max]="model.max"
+    (onSlideEnd)="rangeChanged($event)"></p-slider>

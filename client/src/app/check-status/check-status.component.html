@@ -1,0 +1,10 @@
+<p>Введите номер заказа:</p>
+<input type="text" [(ngModel)]="order">
+<button (click)="checkStatus()">Проверить</button>
+
+<div *ngIf="receivedOrder">
+    <p>Статус заказа №{{ receivedOrder.orderId }}: {{ receivedOrder.orderStatus }}</p>
+</div>
+<div *ngIf="!receivedOrder && check">
+    <p>Заказ не найден. Обратитесь в тех. поддержку!</p>
+</div>
