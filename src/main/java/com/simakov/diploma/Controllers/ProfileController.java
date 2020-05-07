@@ -74,7 +74,8 @@ import io.reactivex.subjects.PublishSubject;
 import io.reactivex.subjects.ReplaySubject;
 import io.reactivex.subjects.Subject;
 
-@CrossOrigin(origins = "*")
+@RequestMapping("/api")
+@CrossOrigin(origins = "https://firsthsedipl.herokuapp.com")
 @RestController
 public class ProfileController {
 
