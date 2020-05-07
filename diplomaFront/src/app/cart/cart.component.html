@@ -1,0 +1,313 @@
+    <!-- <body>
+        <div *ngIf="receivedProducts?.length === 0" class="row all" style="text-align: center; padding: 200px;">
+            <div class="col-sm-12">
+                <p>Найдите товары в нашем каталоге или воспользуйтесь поиском.</p>
+            </div>
+            <div class="col-sm-12">
+                <button class="btn_catalog" routerLink="/category">Перейти</button>
+            </div>
+        </div>
+        <div *ngIf="receivedProducts?.length > 0" class="row all">
+            <div class="col-xl-12 col-sm-12">
+                <p class="bold_text">Корзина</p>
+                <hr>
+            </div>
+            <div class="col-xl-7 col-sm-12 proceed">
+                <div *ngFor="let product of receivedProducts; index as i" class="row prod">
+                    <div class="col-md-1 col-sm-12">
+                        <img src="{{ product.productImg }}" alt="img" width="50px">
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <a routerLink="/product/{{ product.productArticle }}">
+                            {{ product.productTitle }}
+                        </a>
+                        <br>
+                        <i *ngIf="checkWish(product.productId)" class="fas fa-heart"
+                            (click)="delFromWishlist(product.productId)"></i>
+                        <i *ngIf="!checkWish(product.productId)" class="far fa-heart"
+                            (click)="addToWishlist(product.productId)"></i>
+                    </div>
+                    <div class="col-md-2 col-sm-12">
+                        <p>{{ product.productPrice | format }} ₽</p>
+                    </div>
+                    <div class="col-md-2 col-sm-12">
+                        <button (click)="minus(product)">-</button>
+                        <input type="text" style="width: 30px;" value="{{quan(product.productId)}}" id="{{ i }}"
+                            (change)="change($event, product, i)">
+                        <button (click)="plus(product)">+</button>
+                    </div>
+                    <div class="col-md-2 col-sm-12">
+                        {{ product.productPrice * product.productQuantity | format }} ₽
+                    </div>
+                    <div class="col-md-1 col-sm-12">
+                        <button style="text-align: right;" (click)="delFromCart(product.productId)">x</button>
+                    </div>
+                </div>
+                <hr>
+                <div style="text-align: right;">
+                    <p style="margin-bottom: 10px;">Товаров на сумму: {{ cartTotal | format }} ₽</p>
+                    <div *ngIf="discount == 0">
+                        <input type="text" placeholder="Введите промокод" #titleInput id="titleInput">
+                        <button class="btn_add" (click)='addPromo(titleInput.value)'>Применить</button>
+                    </div>
+                    <button *ngIf="discount > 0" class="btn_add" (click)='delPromo()'>Удалить</button>
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-12 proceed">
+                <button class="btn_proceed" routerLink="/order" (click)="lol()">Перейти к оформлению</button>
+                <button class="btn_proceed" (click)="data = true">Перейти к оформлению</button>
+                <p>Доступные способы и время доставки можно выбрать при оформлении заказа</p>
+                <hr>
+                <div class="rows">
+                    <div class="col-sm-12">
+                        <p class="bold_text">Ваша корзина</p>
+                    </div>
+                </div>
+                <div class="rows">
+                    <div class="col-sm-6">
+                        <p>Товары ({{ cartQty }})</p>
+                    </div>
+                    <div class="col-sm-6" style="text-align: right !important;">
+                        {{ cartTotal | format }} ₽
+                    </div>
+                </div>
+                <div class="rows" *ngIf="discount > 0">
+                    <div class="col-sm-6">
+                        <p>Скидка ({{ promoCode?.promoCode }})</p>
+                    </div>
+                    <div class="col-sm-6" style="text-align: right !important;">
+                        - {{ discount | format }} ₽
+                    </div>
+                </div>
+                <hr>
+                <div class="rows">
+                    <div class="col-sm-8">
+                        <p class="bold_text">Общая стоимость</p>
+                    </div>
+                    <div class="col-sm-4" style="text-align: right !important;">
+                        {{ cartPromo | format }} ₽
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 cards" *ngIf="data">
+            <form #checkout="ngForm" (ngSubmit)="onSubmit(checkout)" class="checkout">
+                <div class="form-row">
+                    <label for="card-info">Данные для оплаты</label>
+                    <div id="card-info" #cardInfo></div>
+                    <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
+                </div>
+
+                <button type="submit" (click)="pay = true; data = false">Оплатить</button>
+            </form>
+            <button (click)="pay = true; data = false">Оплатить</button>
+        </div>
+        <div class="col-sm-12 cards" *ngIf="pay">
+            <button (click)="pay = false; data = true">X</button>
+            <form #checkout="ngForm" (ngSubmit)="onSubmit(checkout)" class="checkout">
+                <div class="form-row">
+                    <label for="card-info">Данные для оплаты</label>
+                    <div id="card-info" #cardInfo></div>
+                    <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
+                </div>
+
+                <button type="submit">Оплатить</button>
+            </form>
+        </div>
+    </body> -->
+
+    <body>
+        <!-- <div [ngClass]="{'fulledView':rtl.bigPicView, 'standartView':!rtl.bigPicView}"> -->
+        <div [ngStyle]="{'font-size':rtl.fontSize+'px', 'line-height':rtl.lineHeight, 'color':rtl.colorSite, 'background-color':rtl.backSite}"
+            [ngClass]="{'fulledView':rtl.bigPicView}">
+            <div *ngIf="receivedProducts?.length === 0" class="row all" style="text-align: center; padding: 200px;">
+                <div class="col-sm-12">
+                    <p>Найдите товары в нашем каталоге или воспользуйтесь поиском.</p>
+                </div>
+                <div class="col-sm-12">
+                    <button class="btn_catalog" routerLink="/category">Перейти</button>
+                </div>
+            </div>
+            <div *ngIf="receivedProducts?.length > 0 && !data && !pay" class="row all">
+                <div class="col-xl-12 col-sm-12">
+                    <p class="bold_text">Корзина</p>
+                    <hr>
+                </div>
+                <div class="col-xl-7 col-sm-12 proceed">
+                    <div *ngFor="let product of receivedProducts; index as i">
+                        <app-prod [component]=[component] [product]=[product] [auth]=[auth] (receivedCart)="getCart()">
+                        </app-prod>
+                    </div>
+                    <hr>
+                    <div style="text-align: right;">
+                        <p style="margin-bottom: 10px;">Товаров на сумму: {{ cartTotal | format }} ₽</p>
+                        <div *ngIf="discount == 0">
+                            <input type="text" placeholder="Введите промокод" #titleInput id="titleInput">
+                            <button class="btn_add" (click)='addPromo(titleInput.value)'>Применить</button>
+                        </div>
+                        <button *ngIf="discount > 0" class="btn_add" (click)='delPromo()'>Удалить</button>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-sm-12 proceed">
+                    <!-- <button class="btn_proceed" routerLink="/order" (click)="lol()">Перейти к оформлению</button> -->
+                    <button *ngIf="!data && !pay" class="btn_proceed" (click)="data = true">Перейти к оформлению</button>
+                    <!-- <button *ngIf="data || pay" class="btn_proceed" disabled>Перейти к оформлению</button> -->
+                    <p>Доступные способы и время доставки можно выбрать при оформлении заказа</p>
+                    <hr>
+                    <div class="rows">
+                        <div class="col-sm-12">
+                            <p class="bold_text">Ваша корзина</p>
+                        </div>
+                    </div>
+                    <div class="rows">
+                        <div class="col-sm-6">
+                            <p>Товары ({{ cartQty }})</p>
+                        </div>
+                        <div class="col-sm-6" style="text-align: right !important;">
+                            {{ cartTotal | format }} ₽
+                        </div>
+                    </div>
+                    <div class="rows" *ngIf="discount > 0">
+                        <div class="col-sm-6">
+                            <p>Скидка ({{ promoCode?.promoCode }})</p>
+                        </div>
+                        <div class="col-sm-6" style="text-align: right !important;">
+                            - {{ discount | format }} ₽
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="rows">
+                        <div class="col-sm-8">
+                            <p class="bold_text">Общая стоимость</p>
+                        </div>
+                        <div class="col-sm-4" style="text-align: right !important;">
+                            {{ cartPromo | format }} ₽
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 cards" *ngIf="data">
+                <button (click)="data = false">X</button>
+                <div class="col-xl-12 col-sm-12">
+                    <p class="bold_text">Данные получателя</p>
+                    <hr>
+                </div>
+                <form [formGroup]="addressForm" (ngSubmit)="pay = true; data = false;">
+                    <!-- <div class="form-group">
+                        <input class="form-control" type="text" formControlName="address"
+                            placeholder="Страна, город, улица, дом" style="width:50%" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" formControlName="flat" placeholder="Квартира/офис"
+                            style="width:50%">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" formControlName="ind" placeholder="Индекс"
+                            style="width:50%" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" formControlName="door" placeholder="Подъезд"
+                            style="width:50%">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" formControlName="floor" placeholder="Этаж"
+                            style="width:50%" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" formControlName="doorphone" placeholder="Домофон"
+                            style="width:50%">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" formControlName="comment"
+                            placeholder="Комментарий курьеру" style="width:50%" required>
+                    </div>
+                    <div class="col-xl-12 col-sm-12">
+                        <p class="bold_text">Личные данные</p>
+                        <hr>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" formControlName="fullname" placeholder="ФИО"
+                            style="width:50%" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="date" formControlName="dob" placeholder="Дата рождения"
+                            style="width:50%">
+                    </div>
+                    <div class="form-group">
+                        <input type="radio" value="Мужской" formControlName="gender"> Мужской
+                        <input type="radio" value="Женский" formControlName="gender"> Женский
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="phone" formControlName="phone" placeholder="Телефон"
+                            style="width:50%">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="email" formControlName="email" placeholder="Email"
+                            style="width:50%">
+                    </div> -->
+                    <div class="form-group">
+                        <input class="form-control" type="text" formControlName="address"
+                            placeholder="Страна, город, улица, дом" style="width:50%">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" formControlName="flat" placeholder="Квартира/офис"
+                            style="width:50%">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" formControlName="ind" placeholder="Индекс"
+                            style="width:50%">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" formControlName="door" placeholder="Подъезд"
+                            style="width:50%">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" formControlName="floor" placeholder="Этаж"
+                            style="width:50%">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" formControlName="doorphone" placeholder="Домофон"
+                            style="width:50%">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" formControlName="comment"
+                            placeholder="Комментарий курьеру" style="width:50%" required>
+                    </div>
+                    <div class="col-xl-12 col-sm-12">
+                        <p class="bold_text">Личные данные</p>
+                        <hr>
+                    </div>
+                    <div class="form-group" *ngIf="!receivedUser?.fullname || fchange">
+                        <input class="form-control" type="text" formControlName="fullname" placeholder="ФИО"
+                            style="width:50%">
+                    </div>
+                    <div *ngIf="receivedUser?.fullname && !fchange">
+                        <p>{{receivedUser?.fullname}}</p>
+                        <input type="button" (click)="fchange = true" value="Изменить">
+                    </div>
+                    <div  *ngIf="!receivedUser?.phone || fphone">
+                        <input class="form-control" type="phone" formControlName="phone" placeholder="Телефон"
+                            style="width:50%">
+                    </div>
+                    <div *ngIf="receivedUser?.phone && !fphone">
+                        <p>{{receivedUser?.phone}}</p>
+                        <input type="button" (click)="fphone = true" value="Изменить">
+                    </div>
+                    <div  *ngIf="!receivedUser?.email || femail">
+                        <input class="form-control" type="email" formControlName="email" placeholder="Email"
+                            style="width:50%">
+                    </div>
+                    <div *ngIf="receivedUser?.email && !femail">
+                        <p>{{receivedUser?.email}}</p>
+                        <input type="button" (click)="femail = true" value="Изменить">
+                    </div>
+                    <input type="submit" class="btn btn-secondary align-right" value="Далее">
+                </form>
+            </div>
+            <div class="col-sm-12 cards" *ngIf="pay">
+                <button (click)="pay = false">X</button>
+                <app-card [addressForm]=[addressForm] [auth]=[auth] [cartPromo]=[cartPromo]
+                    [receivedCart]=[receivedCart] (receivedProduct)="getCart()" (pay)="pay = false"></app-card>
+            </div>
+        </div>
+    </body>

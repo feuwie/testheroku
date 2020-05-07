@@ -1,0 +1,137 @@
+<header>
+    <div *ngIf="blind">
+        <div class="col-sm-12" style="line-height: 1; font-size: 14px">
+            <strong>Шрифт</strong>
+            <div class="row">
+                <div class="col-sm-2">
+                    <button (click)="changeFont('-')">A-</button>
+                </div>
+                <div class="col-sm-2">
+                    <button (click)="changeFont('+')">A+</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <button (click)="changeHeight('-')">-</button>
+                </div>
+                <div class="col-sm-2">
+                    <button (click)="changeHeight('+')">+</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <button (click)="changeColor('wb')">Б/ч</button>
+                </div>
+                <div class="col-sm-2">
+                    <button (click)="changeColor('bw')">Ч/б</button>
+                </div>
+                <div class="col-sm-2">
+                    <button (click)="changeColor('yb')">Ж/с</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <button (click)="changeImg('wb')">Б/ч</button>
+                </div>
+                <div class="col-sm-2">
+                    <button (click)="changeImg('dis')">Выкл.</button>
+                </div>
+                <div class="col-sm-2">
+                    <button (click)="changeImg('color')">Цвет</button>
+                </div>
+            </div>
+            <button (click)="lol()">Save</button>
+        </div>
+    </div>
+    <div class="row header">
+        <div class="col-sm-2" style="text-align: center;">
+            <a routerLink="">
+                <img class="mainlogo" src="#" alt="logo">
+            </a>
+        </div>
+        <div class="col-sm-2">
+            <div class="shop">
+                <a routerLink="category">
+                    <i class="fas fa-shopping-cart fa-lg catalog_ic"></i>
+                    <span style="color: white;">Каталог</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-5 search">
+            <input type="text" autocomplete="off" placeholder="Ищите..." tabindex="1" class="searchTerm"
+                [(ngModel)]="product.productTitle">
+            <button type="submit" class="searchButton" (click)="search()">
+                <i class="fa fa-search fa-lg"></i>
+            </button>
+        </div>
+        <div [ngSwitch]="loggedType" style="display: inline-block">
+            <div style="display: inline-block">
+                <div *ngSwitchCase="'guest'">
+                    <div class="col-sm-4 nav">
+                        <a routerLink="auth"><i class="fas fa-user"></i>
+                            <p>Войти</p>
+                        </a>
+                    </div>
+                    <div class="col-sm-4 nav">
+                        <a routerLink="wishlist"><i class="fas fa-heart"></i>
+                            <p>Избранное</p>
+                        </a>
+                    </div>
+                    <div class="col-sm-4 nav">
+                        <a routerLink="cart"><i class="fas fa-shopping-basket"></i>
+                            <p>Корзина</p>
+                        </a>
+                    </div>
+                    <div class="col-sm-4 nav">
+                        <button (click)="blind = !blind">Switch</button>
+                    </div>
+                </div>
+                <div *ngSwitchCase="'customer'">
+                    <div class="col-sm-4 nav">
+                        <a routerLink="profile"><i class="fas fa-user"></i>
+                            <p>Профиль</p>
+                        </a>
+                    </div>
+                    <div class="col-sm-4 nav">
+                        <a routerLink="wishlist"><i class="fas fa-heart"></i>
+                            <p>Избранное</p>
+                        </a>
+                    </div>
+                    <div class="col-sm-4 nav">
+                        <a routerLink="cart"><i class="fas fa-shopping-basket"></i>
+                            <p>Корзина</p>
+                        </a>
+                    </div>
+                    <div class="col-sm-4 nav">
+                        <a (click)="logout()" style="cursor: pointer; float: right;"><i class="fas fa-heart"></i>
+                            <p>Выход</p>
+                        </a>
+                    </div>
+                    <div class="col-sm-4 nav">
+                        <button (click)="blind = !blind">Switch</button>
+                    </div>
+                </div>
+                <div *ngSwitchCase="'admin'">
+                    <div class="col-sm-4 nav">
+                        <a routerLink="orders"><i class="fas fa-user"></i>
+                            <p>Заказы</p>
+                        </a>
+                    </div>
+                    <div class="col-sm-4 nav">
+                        <a routerLink="panel"><i class="fas fa-shopping-basket"></i>
+                            <p>Админ панель</p>
+                        </a>
+                    </div>
+                    <div class="col-sm-4 nav">
+                        <a (click)="logout()" style="cursor: pointer; float: right;"><i class="fas fa-heart"></i>
+                            <p>Выход</p>
+                        </a>
+                    </div>
+                    <div class="col-sm-4 nav">
+                        <button (click)="blind = !blind">Switch</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

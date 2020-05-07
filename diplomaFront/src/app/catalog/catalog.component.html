@@ -1,0 +1,76 @@
+<body>
+    <div class="row all" *ngIf="receivedCategory">
+        <div class="col-sm-12">
+            <p>
+                <a routerLink="">goods</a> - <a routerLink="/category">Каталог</a> -
+                {{ receivedCategory.categoryTitle }}
+            </p>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <p class="bold_text">{{ receivedCategory.categoryTitle }} ({{receivedProducts?.length}} позиции)</p>
+        </div>
+        <div class="col-sm-12 col-md-6" style="text-align: right; margin-bottom: 10px;">
+            <!-- <select (change)="sortBy($event.target.value)"> -->
+            <select (change)="ord = $event.target.value">
+                <option>Сначала (а-я)</option>
+                <option>Сначала (я-а)</option>
+                <option>Сначала дешевые</option>
+                <option>Сначала дорогие</option>
+            </select>
+        </div>
+        <app-vertical-filter-bar [filters]="verticalBarFilters"></app-vertical-filter-bar>
+        <div *ngFor="let choice of filterChoices" class="filter-choice float-left">
+            <span class="filter-choice-title">{{choice.title}}: </span>
+            <a *ngFor="let value of choice.values" class="filter-choice-option">
+                {{value}}
+                <i class="fas fa-times fa-sm" (click)="removeFilterChoice(choice, value)"></i></a>
+        </div>
+        <div class="clearfix"></div>
+
+        <!-- <h4>Applied filters:</h4>
+        <pre>
+        {{filterResults | json}}
+        </pre>
+        <h5>Do something with it!</h5> -->
+
+
+        <div class="col-lg-8 col-sm-12">
+            <div class="row">
+                <!-- <div
+          *ngFor="let product of receivedProducts | filter : 'age' : 'id' : groupValue | paginate: config; index as i"
+          class="col-lg-3 col-md-4 col-sm-12 card"> -->
+                <!-- <div *ngFor="let product of receivedProducts | paginate: config; let i = index" -->
+                <div *ngFor="let product of receivedProducts | myfilter:filterResults?.price | mybrand:filterResults?.manufacturer | asortby:receivedProducts:ord | paginate: config; let i = index">
+                    <!-- <p>{{product.productArticle}}</p>
+                    <a routerLink="/product/{{ product.productArticle }}">{{ product.productTitle }}</a>
+                    <img src="{{ product.productImg }}" alt="img" height="160">
+                    <p style="font-weight: 900">{{ product.productPrice | format }} ₽</p>
+                    <i *ngIf="checkWish(product.productId)" class="fas fa-heart"
+                        (click)="delFromWishlist(product.productId)"></i>
+                    <i *ngIf="!checkWish(product.productId)" class="far fa-heart"
+                        (click)="addToWishlist(product.productId)"></i>
+                    <button class="btn_add" *ngIf="!checkCart(product.productId) && product.productQuantity > 0"
+                        (click)="addToCart(product.productId)">В корзину</button>
+                    <div *ngIf="product.productQuantity < 10 && product.productQuantity > 0">
+                        <p>В наличии: {{ product.productQuantity }} шт.</p>
+                    </div>
+                    <div *ngIf="product.productQuantity > 10">
+                        <p>В наличии: много</p>
+                    </div>
+                    <div *ngIf="product.productQuantity == 0">
+                        <p>Нет в наличии</p>
+                    </div>
+                    <div class="col-md-2 col-sm-12" *ngIf="checkCart(product.productId)">
+                        <button (click)="minus(product)">-</button>
+                        <input type="text" style="width: 30px;" value="{{quan(product.productId)}}" id="{{ i }}"
+                            (change)="change($event, product, i)">
+                        <button (click)="plus(product)">+</button>
+                    </div> -->
+                    <app-prod [component]=[component] [auth]=[auth] [product]=[product]></app-prod>
+                </div>
+                <pagination-controls (pageChange)="pageChange($event)" directionLinks="false" maxSize="10">
+                </pagination-controls>
+            </div>
+        </div>
+    </div>
+</body>
