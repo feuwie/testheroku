@@ -7,4 +7,5 @@ export class Product {
     productPrice?: number;
     productQuantity?: number;
     productTitle?: string;
+    rating?: number;
 }

@@ -21,7 +21,7 @@ export class CheckboxFilterComponent implements OnInit, FBFilterComponent {
     @ViewChild(ShowMoreModalComponent, { static: false })
     public showMoreModal: ShowMoreModalComponent;
 
-    constructor(private catalog: CatalogComponent, public route: ActivatedRoute, private router: Router) { }
+    constructor(public catalog: CatalogComponent, public route: ActivatedRoute, public router: Router) { }
 
     ngOnInit() {
     }

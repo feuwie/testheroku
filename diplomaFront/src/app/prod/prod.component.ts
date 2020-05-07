@@ -22,13 +22,14 @@ export class ProdComponent implements OnInit {
     prodCart: any;
     prodWish: any;
 
+    i: any;
 
     val: any;
 
     @Input() component: any;
 
 
-    constructor(private api: ApiService, private status: AuthStatusService, private rtl: RtlService) { }
+    constructor(public api: ApiService, public status: AuthStatusService, public rtl: RtlService) { }
 
     ngOnInit() {
         this.getCart();

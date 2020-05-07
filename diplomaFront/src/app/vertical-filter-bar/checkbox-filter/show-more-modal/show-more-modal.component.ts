@@ -6,7 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange
   styleUrls: ['./show-more-modal.component.css']
 })
 export class ShowMoreModalComponent implements OnInit {
-  
+
   @Input()
   public title: string
   @Input()
@@ -16,9 +16,9 @@ export class ShowMoreModalComponent implements OnInit {
   public selectedOptions: string[] = []
 
   public searchText: string
-  
+
   @Output()
-  private apply: EventEmitter<string[]> = new EventEmitter()
+  public apply: EventEmitter<string[]> = new EventEmitter()
 
   constructor() { }
 
@@ -27,8 +27,8 @@ export class ShowMoreModalComponent implements OnInit {
     this.searchText = ""
   }
 
-  private checkChanged(item: string, event: Event, checked: boolean): void {
-    
+  public checkChanged(item: string, event: Event, checked: boolean): void {
+
     let index = this.selectedOptions.indexOf(item)
     if(checked) {
       if(index === -1)

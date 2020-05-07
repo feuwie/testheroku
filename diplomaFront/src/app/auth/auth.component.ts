@@ -51,14 +51,17 @@ export class AuthComponent implements OnInit {
 
     resp: any;
 
-    private registerForm: any;
-    private passForm: any;
-    private changePass: any;
-    constructor(private api: ApiService,
-        private router: Router,
-        private formBuilder: FormBuilder,
-        private status: AuthStatusService,
-        private rtl: RtlService) {
+    buttonsOn: any;
+    newPass: any;
+
+    public registerForm: any;
+    public passForm: any;
+    public changePass: any;
+    constructor(public api: ApiService,
+        public router: Router,
+        public formBuilder: FormBuilder,
+        public status: AuthStatusService,
+        public rtl: RtlService) {
         this.createForm();
     }
 

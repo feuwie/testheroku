@@ -14,7 +14,7 @@ export class ApiService {
 
     number: any;
 
-    constructor(private http: HttpClient) { }
+    constructor(public http: HttpClient) { }
 
 
     emailReg(email: any): Observable<any> {

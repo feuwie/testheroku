@@ -25,7 +25,11 @@ export class OrdersComponent implements OnInit {
     };
 
 
-    constructor(private api: ApiService) {
+    status: any;
+
+
+
+    constructor(public api: ApiService) {
     }
 
     ngOnInit() {

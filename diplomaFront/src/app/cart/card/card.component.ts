@@ -25,7 +25,7 @@ export class CardComponent implements OnInit {
 
     receivedProducts: any;
 
-    constructor(private api: ApiService, private router: Router, private status: AuthStatusService, private formBuilder: FormBuilder, private cd: ChangeDetectorRef, private rtl: RtlService) { }
+    constructor(public api: ApiService, public router: Router, public status: AuthStatusService, public formBuilder: FormBuilder, public cd: ChangeDetectorRef, public rtl: RtlService) { }
 
     ngOnInit() {
     }

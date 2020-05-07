@@ -10,7 +10,7 @@ export class CategoryComponent implements OnInit {
 
     receivedCategories: any;
 
-    constructor(private api: ApiService) { }
+    constructor(public api: ApiService) { }
 
     ngOnInit() {
         this.api.getCategory().subscribe(res => { this.receivedCategories = res.object; }, error => console.log(error));

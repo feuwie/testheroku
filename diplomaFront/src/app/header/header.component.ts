@@ -19,9 +19,11 @@ export class HeaderComponent implements OnInit {
     auth: any;
     product: Product = new Product();
 
-    private loggedType: any;
+    public loggedType: any;
 
     fontSize: number = 15;
+
+    blind: any;
 
     // public data: any;
     myData: any;
@@ -33,7 +35,7 @@ export class HeaderComponent implements OnInit {
 
     flagPass: boolean = false;
 
-    constructor(private api: ApiService, private router: Router, private status: AuthStatusService, private rtl: RtlService) {
+    constructor(public api: ApiService, public router: Router, public status: AuthStatusService, public rtl: RtlService) {
         if (localStorage.getItem('auth_type') == undefined) {
             this.api.loginAnon().subscribe(res => {
                 localStorage.setItem('uuid', res.object);

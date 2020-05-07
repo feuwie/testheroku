@@ -8,5 +8,5 @@ import { RtlService } from './rtl.service';
 })
 export class AppComponent {
     title = 'diplomaFront';
-    constructor(private rtl: RtlService) { }
+    constructor(public rtl: RtlService) { }
 }

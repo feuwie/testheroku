@@ -99,7 +99,7 @@
     </div>
     <div *ngIf="checkCart(product.productId)" class="col-sm-3">
         <button (click)="minus(product)">-</button>
-        <input #pRef type="text" style="width: 30px;" value="{{quan(product.productId)}}" id="{{ i }}"
+        <input #pRef type="text" style="width: 30px;" value="{{quan(product.productId)}}"
             (change)="change($event, product, i)">
         <button (click)="plus(product)">+</button>
     </div>

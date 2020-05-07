@@ -10,7 +10,7 @@ import { tap, map } from 'rxjs/operators';
     providedIn: 'root'
 })
 export class AuthStatusService {
-    constructor(private api: ApiService) { }
+    constructor(public api: ApiService) { }
     isChanged: any = false;
 
     // getCart(auth: any) {

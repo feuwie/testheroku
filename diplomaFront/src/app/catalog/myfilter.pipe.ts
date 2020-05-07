@@ -6,7 +6,7 @@ import { CatalogComponent } from './catalog.component';
     pure: false
 })
 export class MyFilterPipe implements PipeTransform {
-    constructor(private catalog: CatalogComponent) { }
+    constructor(public catalog: CatalogComponent) { }
     transform(items: any[], filter: any): any {
         // console.log(filter);
         // console.log(filter2);

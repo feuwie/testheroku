@@ -11,12 +11,12 @@ import { Product } from '../model/product';
 // export class WishlistComponent implements OnInit {
 
 
-//     private auth: string;
+//     public auth: string;
 //     receivedWishlist: any = [];
 //     receivedCart: any;
 //     receivedProducts: any = [];
 
-//     constructor(private api: ApiService, private status: AuthStatusService) { }
+//     constructor(public api: ApiService, public status: AuthStatusService) { }
 
 //     ngOnInit() {
 //         this.auth = this.status.setAuth();
@@ -189,13 +189,15 @@ import { Product } from '../model/product';
 export class WishlistComponent implements OnInit {
 
 
-    private auth: string;
+    public auth: string;
     receivedProducts: any = [];
     wish: any;
     cart: any;
     component: any;
 
-    constructor(private api: ApiService, private status: AuthStatusService) { }
+    ord: any;
+
+    constructor(public api: ApiService, public status: AuthStatusService) { }
 
     ngOnInit() {
         this.auth = this.status.setAuth();

@@ -24,13 +24,13 @@ export class CatalogComponent implements OnInit {
     receivedWishlist: any;
     receivedCart: any;
 
-    private auth: string;
+    public auth: string;
     config: any;
     addedToWishlist: any[] = [];
     testArray: any[] = [];
     testArrayTwo: any[] = [];
 
-
+    ord: any;
 
     component: any;
 
@@ -53,7 +53,7 @@ export class CatalogComponent implements OnInit {
     public filterChoices: FilterChoice[];
 
 
-    constructor(private router: Router, public route: ActivatedRoute, private api: ApiService, private status: AuthStatusService) {
+    constructor(public router: Router, public route: ActivatedRoute, public api: ApiService, public status: AuthStatusService) {
         this.config = {
             currentPage: 1,
             itemsPerPage: 2

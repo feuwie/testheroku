@@ -7,7 +7,7 @@ import { Product } from '../model/product';
     pure: false
 })
 export class MyBrandPipe implements PipeTransform {
-    constructor(private catalog: CatalogComponent) { }
+    constructor(public catalog: CatalogComponent) { }
     transform(items: any[], filter: any): any {
         let arr = [];
         let mapped = [];

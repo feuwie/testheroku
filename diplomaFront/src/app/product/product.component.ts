@@ -20,15 +20,18 @@ export class ProductComponent implements OnInit {
     testArray: any[] = [];
     testArrayTwo: any[] = [];
     receivedCategory: any;
-    private auth: string;
+    public auth: string;
 
     obje: any;
 
     show: any = 4;
 
+    rating: any;
+    isReview: any;
+
     // rating: any;
 
-    constructor(private api: ApiService, private route: ActivatedRoute, private router: Router, private status: AuthStatusService) { }
+    constructor(public api: ApiService, public route: ActivatedRoute, public router: Router, public status: AuthStatusService) { }
 
     ngOnInit() {
         this.auth = this.status.setAuth();

@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit {
     component: any;
     auth: any;
 
-    constructor(private route: ActivatedRoute, private api: ApiService, private status: AuthStatusService) {
+    constructor(public route: ActivatedRoute, public api: ApiService, public status: AuthStatusService) {
     }
 
     ngOnInit() {

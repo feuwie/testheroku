@@ -13,7 +13,7 @@ export class CheckStatusComponent implements OnInit {
     receivedOrder: any;
     check: any = false;
 
-    constructor(private api: ApiService) { }
+    constructor(public api: ApiService) { }
 
     ngOnInit() {
     }

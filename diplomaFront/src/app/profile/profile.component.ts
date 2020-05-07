@@ -7,6 +7,7 @@ import { formatDate } from '@angular/common';
 import { User } from '../model/user';
 import { AuthStatusService } from './authstatus.service';
 import { map } from 'rxjs/operators';
+import { Change } from '../model/change';
 
 @Component({
     selector: 'app-profile',
@@ -64,7 +65,7 @@ export class ProfileComponent implements OnInit {
             'height': '50px'
         }
     };
-    change = {};
+    change: Change;
 
 
     arr: any;
@@ -85,11 +86,15 @@ export class ProfileComponent implements OnInit {
     confirmEmail: any;
     emailtester: any;
 
-    private changePhone: any;
-    private changePass: any;
-    private changeEmail: any;
+    public changePhone: any;
+    public changePass: any;
+    public changeEmail: any;
 
-    constructor(private api: ApiService, private router: Router, private formBuilder: FormBuilder, private status: AuthStatusService, private cdr: ChangeDetectorRef) { }
+    // fullname: any;
+    // gender: any;
+    // dob: any;
+
+    constructor(public api: ApiService, public router: Router, public formBuilder: FormBuilder, public status: AuthStatusService, public cdr: ChangeDetectorRef) { }
 
     ngOnInit() {
         this.auth = this.status.setAuth();

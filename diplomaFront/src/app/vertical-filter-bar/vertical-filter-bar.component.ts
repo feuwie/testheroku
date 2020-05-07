@@ -18,7 +18,7 @@ export class VerticalFilterBarComponent implements OnInit {
 
     @Output() public filterResultsChange: EventEmitter<any> = new EventEmitter();
 
-    constructor(private changeDetector: ChangeDetectorRef, private route: ActivatedRoute, private router: Router) { }
+    constructor(public changeDetector: ChangeDetectorRef, public route: ActivatedRoute, public router: Router) { }
 
     ngOnInit() {
         this.route.queryParamMap.subscribe((paramsMap: Params) => {

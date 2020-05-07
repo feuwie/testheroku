@@ -45,7 +45,19 @@ export class PanelComponent implements OnInit {
 
     disable: any = false;
 
-    constructor(private api: ApiService, private http: HttpClient, private status: AuthStatusService) { }
+
+    sendUser: any;
+    roleUser: any;
+    allUsers: any;
+    sendProd: any;
+    editOProd: any;
+    edProd: any;
+    plusProd: any;
+    editedProd: any;
+    plusCat: any;
+    editCat: any;
+
+    constructor(public api: ApiService, public http: HttpClient, public status: AuthStatusService) { }
 
     ngOnInit() {
     }
