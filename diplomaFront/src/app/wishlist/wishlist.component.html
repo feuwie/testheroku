@@ -1,0 +1,54 @@
+<body>
+    <div *ngIf="receivedProducts?.length === 0" class="row all" style="text-align: center; padding: 200px;">
+        <div class="col-sm-12">
+            <p>Ваш список избранных товаров пока пуст. <br>Найдите товары в нашем каталоге или воспользуйтесь поиском.
+            </p>
+        </div>
+        <div class="col-sm-12">
+            <button class="btn_catalog" routerLink="/category">Перейти</button>
+        </div>
+    </div>
+    <div *ngIf="receivedProducts?.length > 0" class="row all">
+        <div class="col-xl-12 col-sm-12">
+            <p class="bold_text">Избранное</p>
+        </div>
+        <div class="col-xl-12 col-sm-12">
+            <select (change)="ord = $event.target.value">
+                <option>Сначала (а-я)</option>
+                <option>Сначала (я-а)</option>
+                <option>Сначала дешевые</option>
+                <option>Сначала дорогие</option>
+            </select>
+            <hr>
+        </div>
+        <div class="row">
+            <div *ngFor="let product of receivedProducts | asortby:receivedProducts:ord; index as i">
+                <!-- <button style="text-align: right;" (click)="delFromWishlist(product.productId)">x</button>
+                <img src="{{ product.productImg }}" alt="img" width="80">
+                <a routerLink="/product/{{ product.productArticle }}">
+                    {{ product.productTitle }}
+                    {{ product.productPrice | format}} ₽
+                </a>
+                <button class="btn_add" *ngIf="!checkCart(product.productId) && product.productQuantity > 0"
+                    (click)="addToCart(product.productId)">В корзину</button>
+                <div *ngIf="product.productQuantity < 10 && product.productQuantity > 0">
+                    <p>В наличии: {{ product.productQuantity }} шт.</p>
+                </div>
+                <div *ngIf="product.productQuantity > 10">
+                    <p>В наличии: много</p>
+                </div>
+                <div *ngIf="product.productQuantity == 0">
+                    <p>Нет в наличии</p>
+                </div>
+                <div class="col-md-2 col-sm-12" *ngIf="checkCart(product.productId)">
+                    <button (click)="minus(product)">-</button>
+                    <input type="text" style="width: 30px;" value="{{quan(product.productId)}}" id="{{ i }}"
+                        (change)="change($event, product, i)">
+                    <button (click)="plus(product)">+</button>
+                </div> -->
+                <app-prod [component]=[component] [product]=[product] [auth]=[auth] (receivedWish)="getWishlist()">
+                </app-prod>
+            </div>
+        </div>
+    </div>
+</body>

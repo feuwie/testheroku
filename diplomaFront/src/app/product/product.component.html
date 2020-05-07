@@ -1,0 +1,139 @@
+<body>
+    <div class="row all">
+        <div class="row cards">
+            <div class="col-sm-12" *ngIf="receivedProduct">
+                <a routerLink="">goods</a> - <a routerLink="/category">Каталог</a> - <a
+                    routerLink="/category/{{ receivedProduct?.parentId }}">{{ receivedCategory?.categoryTitle }}</a>
+                - {{ receivedProduct?.productTitle }}
+            </div>
+            <div class="col-sm-12">
+                <p>{{ receivedProduct?.productTitle }}</p>
+            </div>
+            <app-star-rating [rating]="receivedProduct.rating"></app-star-rating>
+            <!-- <div class="col-sm-12" style="margin-bottom: 20px;">
+                Артикул 100 025 399 381 | <i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span> (22)</span> |
+                <a href="#" style="color: #5A7BD0;">В избранное</a>
+            </div> -->
+            <div class="col-sm-12 col-12">
+                <!-- <i *ngIf="testArray.includes(receivedProduct?.productArticle)" class="fas fa-heart"
+                    (click)="delFromWishlist(receivedProduct)"></i>
+                <i *ngIf="!testArray.includes(receivedProduct?.productArticle)" class="far fa-heart"
+                    (click)="addToWishlist(receivedProduct)"></i> -->
+                <i *ngIf="checkWish(receivedProduct?.productId)" class="fas fa-heart"
+                    (click)="delFromWishlist(receivedProduct?.productId)"></i>
+                <i *ngIf="!checkWish(receivedProduct?.productId)" class="far fa-heart"
+                    (click)="addToWishlist(receivedProduct?.productId)"></i>
+            </div>
+            <div class="col-sm-12 col-12">
+                <p>Артикул {{ receivedProduct?.productArticle }}</p>
+            </div>
+            <div class="col-sm-1">
+                %slider%
+            </div>
+            <div class="col-sm-3">
+                %full img%
+            </div>
+            <div class="col-sm-12 col-lg-4">
+                <span>Операционная система: </span><span>iOS</span><br>
+                <span>Встроенная память, в гигабайтах: </span><span>128</span><br>
+                <span>Оперативная память, в гигабайтах: </span><span>4</span><br>
+                <span>Возможность расширения памяти: </span><span>Нет</span><br>
+                <span>Диагональ экрана, в дюймах: </span><span>6.1</span><br>
+                <span>Цвет:</span><br>
+                %slider%<br>
+                <span>Объем памяти:</span><br>
+                %memory%<br>
+                <button (click)="isSpec = true; isAbout = false">Все характеристики</button><br>
+            </div>
+            <div class="col-sm-12 col-lg-3">
+                <p style="font-weight: 900; font-size: 24px;">100 609 ₽</p>
+                <div class="col-sm-12">
+                    <div *ngIf="receivedProduct?.productQuantity < 10 && receivedProduct?.productQuantity > 0">
+                        <p>В наличии: {{ receivedProduct?.productQuantity }} шт.</p>
+                    </div>
+                    <div *ngIf="receivedProduct?.productQuantity > 10">
+                        <p>В наличии: много</p>
+                    </div>
+                    <div *ngIf="receivedProduct?.productQuantity == 0">
+                        <p>Нет в наличии</p>
+                    </div>
+                    <button class="btn_add"
+                        *ngIf="!checkCart(receivedProduct?.productId) && receivedProduct?.productQuantity > 0"
+                        (click)="addToCart(receivedProduct?.productId)">В корзину</button>
+                    <div class="col-md-2 col-sm-12" *ngIf="checkCart(receivedProduct?.productId)">
+                        <button (click)="minus(receivedProduct)">-</button>
+                        <!-- <input type="text" style="width: 30px;" value="{{quan(receivedProduct.productId)}}" id="qty"
+                            (change)="change($event, receivedProduct)"> -->
+                        <input type="text" style="width: 30px;" value="{{quan(receivedProduct.productId)}}" #pRef
+                            (change)="change($event, receivedProduct)">
+                        <button (click)="plus(receivedProduct)">+</button>
+                    </div>
+                </div>
+                <!-- <div class="rows">
+                    <div class="col-sm-6"><button class="btn">Подарить</button></div>
+                    <div class="col-sm-6"><button class="btn">Купить в 1 клик</button></div>
+                </div> -->
+                <p class="bold_text">Доставка</p>
+                <div class="rows">
+                    <div class="col-sm-2">
+                        <i class="fas fa-truck fa-xl"></i>
+                    </div>
+                    <div class="col-sm-10">
+                        <p>Доставка, бесплатно</p>
+                    </div>
+                </div>
+                <div class="rows">
+                    <div class="col-sm-2">
+                        <i class="fas fa-map-marker-alt fa-lg"></i>
+                    </div>
+                    <div class="col-sm-10">
+                        <p>Cамовывоз, бесплатно</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <button (click)="isAbout = true; isSpec = false; isReview = false">О товаре</button> | <button
+                    (click)="isSpec = true; isAbout = false; isReview = false">Характеристики</button> | <button
+                    (click)="isSpec = false; isAbout = false; isReview = true">Отзывы</button>
+            </div>
+            <div *ngIf="isAbout" class="col-sm-12">
+                <p style="margin-top: 10px;" class="bold_text">Описание</p>
+                <p>Смартфон Apple iPhone 11 Black (MWM02RU/A) оснащен IPS-дисплеем размером 6,1 дюймов по диагонали. Для
+                    передачи данных поддерживаются стандарты связи GPRS, 4G (LTE), 3G, 2G. Можно пользоваться услугами
+                    одного мобильного оператора при наличии встроенной SIM-карты. Для проведения покупок посредством
+                    смартфона внедрены технологии NFC, Apple Pay.</p>
+            </div>
+            <div *ngIf="isSpec" class="col-sm-12">
+                <p style="margin-top: 10px;" class="bold_text">Характеристики</p>
+                <p>Хелоу</p>
+            </div>
+        </div>
+        <div *ngIf="isReview" class="row cards">
+            <div class="col-sm-12">
+                <p style="margin-top: 10px;" class="bold_text">Отзывы ({{receivedReviews.length}})</p>
+            </div>
+            <div *ngIf="receivedReviews?.length > 0" class="col-sm-12">
+                <div *ngFor="let review of receivedReviews | slice:0:show; let i = index">
+                    <div class="row"
+                        style="margin-bottom: 25px; background-color: rgb(247, 244, 241); border-radius: 5px; border: 1px solid gray; padding: 20px;">
+                        <div class="col-sm-8" *ngIf="review.fullname && review.userid">{{review.fullname}}
+                            #{{review.userid}}</div>
+                        <div class="col-sm-8" *ngIf="!review.fullname && review.userid">Аноним #{{review.userid}}</div>
+                        <div class="col-sm-2" style="text-align: right;">{{review.reviewAdded | date: 'dd.MM.yyyy'}}
+                            года</div>
+                        <!-- <div class="col-sm-1" style="text-align: right;">{{review.rating}}</div> -->
+                        <div class="col-sm-2" style="text-align: right;">
+                            <app-star-rating [rating]="review.rating"></app-star-rating>
+                        </div>
+                        <div class="col-sm-12" style="padding-top: 20px;">{{review.reviewText}}</div>
+                    </div>
+                    <button *ngIf="i==3 && show == 4" (click)="show = receivedReviews.length">More</button>
+                </div>
+            </div>
+            <div *ngIf="receivedReviews?.length == 0">
+                На данный товар в настоящее время не оставлен ни один отзыв!
+            </div>
+        </div>
+    </div>
+</body>
