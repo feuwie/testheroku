@@ -59,7 +59,8 @@ export class HeaderComponent implements OnInit {
     }
 
     connect(): void {
-        let source = new EventSource('http://localhost:8080/checkchange');
+        // let source = new EventSource('http://localhost:8080/checkchange');
+        let source = new EventSource('/checkchange');
         source.addEventListener('message', message => {
             if (!this.status.isChanged) {
                 this.api.checkToken(localStorage.getItem('auth_token')).subscribe(res => {
