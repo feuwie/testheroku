@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DemoApplication<diploma>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "mainClass": "com.simakov.diploma.DemoApplication",
+            "projectName": "diploma",
+            "args": ""
+        }
+    ]
+}
