@@ -18,62 +18,62 @@ export class ApiService {
 
 
     emailReg(email: any): Observable<any> {
-        return this.http.post('/verifyemail', email);
+        return this.http.post('https://firsthsedipl.herokuapp.com/verifyemail', email);
     }
 
     emailCheck(code: String, email: any): Observable<any> {
         // email = email.replace('+', '%2B');
-        return this.http.get<any>('/checkemail' + '?code=' + code + '&email=' + email);
+        return this.http.get<any>('https://firsthsedipl.herokuapp.com/checkemail' + '?code=' + code + '&email=' + email);
     }
 
     phoneReg(user: User): Observable<any> {
-        return this.http.post('/verifyphone', user);
+        return this.http.post('https://firsthsedipl.herokuapp.com/verifyphone', user);
     }
     // phoneCheck(str: String, code: String, phone: any): Observable<any> {
     //     const body = { str: str, code: code, phone: phone };
-    //     return this.http.post('/checkphone', body);
+    //     return this.http.post('https://firsthsedipl.herokuapp.com/checkphone', body);
     // }
     phoneCheck(str: String, code: String, phone: any): Observable<any> {
         phone = phone.replace('+', '%2B');
-        return this.http.get<any>('/checkphone' + '?str=' + str + '&code=' + code + '&phone=' + phone);
+        return this.http.get<any>('https://firsthsedipl.herokuapp.com/checkphone' + '?str=' + str + '&code=' + code + '&phone=' + phone);
     }
 
     // auth
 
     // check(user: User): Observable<any> {
-    //     return this.http.post('/user/check', user);
+    //     return this.http.post('https://firsthsedipl.herokuapp.com/user/check', user);
     // }
 
     register(user: User, pass: any): Observable<any> {
         user.password = pass.password;
-        return this.http.post('/user/registration', user);
+        return this.http.post('https://firsthsedipl.herokuapp.com/user/registration', user);
     }
 
     userLogin(user: User): Observable<any> {
-        return this.http.post('/user/login', user);
+        return this.http.post('https://firsthsedipl.herokuapp.com/user/login', user);
     }
 
     adminLogin(user: User): Observable<any> {
-        return this.http.post('/admin/login', user);
+        return this.http.post('https://firsthsedipl.herokuapp.com/admin/login', user);
     }
 
     userPassLogin(user: User): Observable<any> {
-        return this.http.post('/user/loginpass', user);
+        return this.http.post('https://firsthsedipl.herokuapp.com/user/loginpass', user);
     }
 
     adminPassLogin(user: User): Observable<any> {
-        return this.http.post('/admin/loginpass', user);
+        return this.http.post('https://firsthsedipl.herokuapp.com/admin/loginpass', user);
     }
 
     // category
 
     getCategoryRoute(route: any): Observable<any> {
         this.number = Number(route);
-        return this.http.post<any>('/categoryroute', this.number);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/categoryroute', this.number);
     }
 
     getCategory(): Observable<any> {
-        return this.http.get<any>('/category');
+        return this.http.get<any>('https://firsthsedipl.herokuapp.com/category');
     }
 
     // product
@@ -81,62 +81,62 @@ export class ApiService {
     getProductParent(id: string): Observable<any> {
         this.number = Number(id);
         const body = { parentId: this.number };
-        return this.http.post<any>('/{parent}', body);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/{parent}', body);
     }
 
     getProductTitle(title: string): Observable<any> {
         const body = { productTitle: title };
-        return this.http.post<any>('/{title}', body);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/{title}', body);
     }
 
     getProductArticle(article: string): Observable<any> {
         this.number = Number(article);
         const body = { productArticle: this.number };
-        return this.http.post<any>('/{article}', body);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/{article}', body);
     }
 
     getProductId(productId: number): Observable<any> {
-        return this.http.post<any>('/getproductid', productId);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/getproductid', productId);
     }
 
     getProducts(): Observable<any> {
-        return this.http.get<any>('/getproducts');
+        return this.http.get<any>('https://firsthsedipl.herokuapp.com/getproducts');
     }
 
     // profile
 
     getProfile(auth: string): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.post<any>('/profile', null, { headers: myheader }); // change
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/profile', null, { headers: myheader }); // change
     }
 
     getOrders(auth: string): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.get<any>('/getorders', { headers: myheader });
+        return this.http.get<any>('https://firsthsedipl.herokuapp.com/getorders', { headers: myheader });
     }
     getAOrders(auth: string): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.get<any>('/getaorders', { headers: myheader });
+        return this.http.get<any>('https://firsthsedipl.herokuapp.com/getaorders', { headers: myheader });
     }
 
     updProfilePersonal(auth: string, change: any): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.post<any>('/updprofilepinfo', change, { headers: myheader });
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/updprofilepinfo', change, { headers: myheader });
     }
 
     updPhone(auth: string, change: any): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.post<any>('/updphone', change, { headers: myheader });
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/updphone', change, { headers: myheader });
     }
 
     updPass(auth: string, change: any): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.post<any>('/updpass', change, { headers: myheader });
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/updpass', change, { headers: myheader });
     }
 
     delProfile(auth: string): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.get<any>('/delprofile', { headers: myheader });
+        return this.http.get<any>('https://firsthsedipl.herokuapp.com/delprofile', { headers: myheader });
     }
 
 
@@ -144,44 +144,44 @@ export class ApiService {
 
     getCart(auth: string): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.get<any>('/cart', { headers: myheader });
+        return this.http.get<any>('https://firsthsedipl.herokuapp.com/cart', { headers: myheader });
     }
 
     addToCart(auth: string, prodId: any): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.post<any>('/addcart', prodId, { headers: myheader });
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/addcart', prodId, { headers: myheader });
     }
 
     updateCart(auth: string, cartid: number, qty: number): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.get<any>('/updcart' + '?cartid=' + cartid + '&quantity=' + qty, { headers: myheader });
+        return this.http.get<any>('https://firsthsedipl.herokuapp.com/updcart' + '?cartid=' + cartid + '&quantity=' + qty, { headers: myheader });
     }
 
     deleteCart(auth: string, cartid: number): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.post<any>('/delcart', cartid, { headers: myheader });
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/delcart', cartid, { headers: myheader });
     }
 
     getCartId(auth: string, cartid: any): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.post<any>('/cartid', cartid, { headers: myheader });
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/cartid', cartid, { headers: myheader });
     }
 
     // wishlist
 
     getWishlist(auth: string): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.get<any>('/wishlist', { headers: myheader });
+        return this.http.get<any>('https://firsthsedipl.herokuapp.com/wishlist', { headers: myheader });
     }
 
     addToWishlist(auth: string, productId: any): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.post<any>('/addwishlist', productId, { headers: myheader });
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/addwishlist', productId, { headers: myheader });
     }
 
     delFromWishlist(auth: string, wishlistId: number): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.post<any>('/delwishlist', wishlistId, { headers: myheader });
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/delwishlist', wishlistId, { headers: myheader });
     }
 
 
@@ -211,7 +211,7 @@ export class ApiService {
 
     checkToken(auth: string) {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.get<any>('/checktoken', { headers: myheader });
+        return this.http.get<any>('https://firsthsedipl.herokuapp.com/checktoken', { headers: myheader });
     }
 
     // getAuthType(): string {
@@ -230,23 +230,23 @@ export class ApiService {
     // promo
 
     // getPromo(): Observable<any> {
-    //     return this.http.get<any>('/getpromo');
+    //     return this.http.get<any>('https://firsthsedipl.herokuapp.com/getpromo');
     // }
     getPromoId(promoId: any): Observable<any> {
-        return this.http.post<any>('/getpromoid', promoId);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/getpromoid', promoId);
     }
 
     getPromo(title: any): Observable<any> {
-        return this.http.post<any>('/getpromo', title);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/getpromo', title);
     }
 
     addPromo(auth: any, promoId: number): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.post<any>('/addpromo', promoId, { headers: myheader });
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/addpromo', promoId, { headers: myheader });
     }
     delPromo(auth: any): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.get<any>('/delpromo', { headers: myheader });
+        return this.http.get<any>('https://firsthsedipl.herokuapp.com/delpromo', { headers: myheader });
     }
 
 
@@ -254,32 +254,32 @@ export class ApiService {
 
     // chargeCard(token?: any, amount?: any, email?: any) {
     //     const body = { userEmail: email, userAmount: amount, token };
-    //     return this.http.post<any>('/payment', body);
+    //     return this.http.post<any>('https://firsthsedipl.herokuapp.com/payment', body);
     // }
     chargeCard(token: any, amount: any, uuid: any, phone: any) {
         const body = { uuid: uuid[0], userAmount: amount[0], token, phone: phone };
-        return this.http.post<any>('/payment', body);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/payment', body);
     }
 
     // order
 
     // makeOrder(auth: any, comment: any) {
     //     const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-    //     return this.http.post<any>('/makeorder', comment, { headers: myheader });
+    //     return this.http.post<any>('https://firsthsedipl.herokuapp.com/makeorder', comment, { headers: myheader });
     // }
     makeOrder(auth: any, address: any, paymentId: any) {
         const body = { paymentId: paymentId };
         address = Object.assign(address, body);
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
         const phone = address.phone.replace('+', '%2B');
-        return this.http.post<any>('/makeorder' + '?phone=' + phone, address, { headers: myheader });
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/makeorder' + '?phone=' + phone, address, { headers: myheader });
     }
 
 
 
     // test
     loginAnon(): Observable<any> {
-        return this.http.get('/user/loginanon');
+        return this.http.get('https://firsthsedipl.herokuapp.com/user/loginanon');
     }
 
 
@@ -287,27 +287,27 @@ export class ApiService {
     // order
     orderStatus(order: any) {
         order = Number(order);
-        return this.http.post('/orderstatus', order);
+        return this.http.post('https://firsthsedipl.herokuapp.com/orderstatus', order);
     }
 
     // panel
     getAllOrders(): Observable<any> {
-        return this.http.get<any>('/getallorders');
+        return this.http.get<any>('https://firsthsedipl.herokuapp.com/getallorders');
     }
     getAllAOrders(): Observable<any> {
-        return this.http.get<any>('/getallaorders');
+        return this.http.get<any>('https://firsthsedipl.herokuapp.com/getallaorders');
     }
 
     deleteOrder(orderId: any): Observable<any> {
-        return this.http.post<any>('/deleteorder', orderId);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/deleteorder', orderId);
     }
 
     delUnusedCarts(): Observable<any> {
-        return this.http.get<any>('/deletecarts');
+        return this.http.get<any>('https://firsthsedipl.herokuapp.com/deletecarts');
     }
 
     delUnusedWish(): Observable<any> {
-        return this.http.get<any>('/deletewish');
+        return this.http.get<any>('https://firsthsedipl.herokuapp.com/deletewish');
     }
 
     updStatus(orderId: any, status: any, phone: any): Observable<any> {
@@ -315,7 +315,7 @@ export class ApiService {
         console.log(phone);
         const phones = phone.replace('+', '%2B');
         console.log(phones);
-        return this.http.post<any>('/updstatus' + '?phone=' + phones, body);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/updstatus' + '?phone=' + phones, body);
     }
 
 
@@ -325,17 +325,17 @@ export class ApiService {
     setBlind(auth: any, blindFont: any, lineHeight: any, colorSite: any, backSite: any): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
         const body = { fontsize: blindFont, lineheight: lineHeight, colorsite: colorSite, backsite: backSite };
-        return this.http.post<any>('/blindfont', body, { headers: myheader });
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/blindfont', body, { headers: myheader });
     }
     getBlind(auth: any): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.get<any>('/getblind', { headers: myheader });
+        return this.http.get<any>('https://firsthsedipl.herokuapp.com/getblind', { headers: myheader });
     }
 
 
 
     getBio(): Observable<any> {
-        return this.http.get<any>('/getbio');
+        return this.http.get<any>('https://firsthsedipl.herokuapp.com/getbio');
     }
 
     bioChange(auth: any, address: any, order: any): Observable<any> {
@@ -345,95 +345,95 @@ export class ApiService {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
         let ordere = { orderId: order };
         let obj = Object.assign(address, ordere);
-        return this.http.post<any>('/biochange', obj, { headers: myheader });
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/biochange', obj, { headers: myheader });
     }
 
 
     cancelOrder(auth: any, order: any): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.post<any>('/cancelord', order, { headers: myheader });
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/cancelord', order, { headers: myheader });
     }
 
     requestCancel(auth: any, orderId: any): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.post<any>('/reqorder', orderId, { headers: myheader });
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/reqorder', orderId, { headers: myheader });
     }
 
     // getCancOrders(): Observable<any> {
-    //     return this.http.get<any>('/getcancorders');
+    //     return this.http.get<any>('https://firsthsedipl.herokuapp.com/getcancorders');
     // }
 
 
 
     addEmail(auth: any, email: any): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.post<any>('/addemail', email, { headers: myheader });
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/addemail', email, { headers: myheader });
     }
 
     confDecide(auth: any, orderId: any): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
-        return this.http.post<any>('/confdecide', orderId, { headers: myheader });
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/confdecide', orderId, { headers: myheader });
     }
 
     rejectionRequest(orderId: any): Observable<any> {
-        return this.http.post<any>('/rejectionreq', orderId);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/rejectionreq', orderId);
     }
 
     confirmRequest(order: any): Observable<any> {
-        return this.http.post<any>('/confirmreq', order);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/confirmreq', order);
     }
 
 
     allUsers(): Observable<any> {
-        return this.http.get<any>('/arrusers');
+        return this.http.get<any>('https://firsthsedipl.herokuapp.com/arrusers');
     }
 
     findUser(userid: any): Observable<any> {
-        return this.http.post<any>('/finduser', userid);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/finduser', userid);
     }
 
     blockUser(userid: any): Observable<any> {
-        return this.http.post<any>('/blockuser', userid);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/blockuser', userid);
     }
 
     unBlockUser(userid: any): Observable<any> {
-        return this.http.post<any>('/unblockuser', userid);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/unblockuser', userid);
     }
 
     editCategory(catId: any, str: any, title: any): Observable<any> {
         const body = { categoryId: catId, categoryTitle: title, categoryImg: str };
-        return this.http.post<any>('/editcat', body);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/editcat', body);
     }
 
     editProd(prodId: any, str: any, prod: any): Observable<any> {
         const body = { productId: prodId, productImg: str, productArticle: prod.productArticle, productPrice: prod.productPrice, productQuantity: prod.productQuantity, productTitle: prod.productTitle };
-        return this.http.post<any>('/editprod', body);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/editprod', body);
     }
 
     delProd(prodId: any): Observable<any> {
-        return this.http.post<any>('/delprod', prodId);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/delprod', prodId);
     }
 
     delCat(catId: any): Observable<any> {
-        return this.http.post<any>('/delcat', catId);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/delcat', catId);
     }
     addCat(str: any, title: any): Observable<any> {
         const body = { categoryTitle: title, categoryImg: str };
-        return this.http.post<any>('/addcat', body);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/addcat', body);
     }
     addProd(catId: any, str: any, prod: any): Observable<any> {
         const body = { parentId: catId, productQuantity: prod.productQuantity, productImg: str, productArticle: prod.productArticle, productPrice: prod.productPrice, productTitle: prod.productTitle };
-        return this.http.post<any>('/addprod', body);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/addprod', body);
     }
 
     getReviews(prodId: any): Observable<any> {
-        return this.http.post<any>('/getreviews', prodId);
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/getreviews', prodId);
     }
 
     sendReview(auth: any, ord: any, review: any): Observable<any> {
         const myheader = new HttpHeaders().set('AUTH_TOKEN', auth);
         const body = { productId: Number(ord.productId), reviewText: review.reviewText, rating: Number(review.rating) };
-        return this.http.post<any>('/sendreview' + '?orderid=' + ord.orderId, body, { headers: myheader });
+        return this.http.post<any>('https://firsthsedipl.herokuapp.com/sendreview' + '?orderid=' + ord.orderId, body, { headers: myheader });
     }
 }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-main',
@@ -6,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-    constructor() {
+    constructor(public http: HttpClient) {
     }
 
     ngOnInit() {
+    }
+
+
+    lol() {
+        console.log('gere');
+        this.http.get('https://firsthsedipl.herokuapp.com/test').subscribe(res => {
+            console.log(res);
+        });
     }
 }

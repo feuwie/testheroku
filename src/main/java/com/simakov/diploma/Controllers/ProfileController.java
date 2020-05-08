@@ -710,6 +710,13 @@ public class ProfileController {
         return new ResponseEntity<Response>(resp, HttpStatus.OK);
     }
 
+    @PostMapping("/test")
+    public ResponseEntity<Response> test() {
+        Response resp = new Response();
+        resp.setMessage("HERE");
+        return new ResponseEntity<Response>(resp, HttpStatus.OK);
+    }
+
     @PostMapping("/getreviews")
     public ResponseEntity<Response> getReviews(@RequestBody int prodId) {
         Response resp = new Response();
