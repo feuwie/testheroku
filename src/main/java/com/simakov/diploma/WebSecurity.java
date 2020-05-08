@@ -16,9 +16,14 @@ import org.springframework.security.web.session.HttpSessionEventPublisher;
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
+    // protected void configure(HttpSecurity http) throws Exception {
+    //     http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.OPTIONS, "*/").permitAll()
+    //             .antMatchers(HttpMethod.GET, "/login").permitAll();
+    // }
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.OPTIONS, "*/").permitAll()
-                .antMatchers(HttpMethod.GET, "/login").permitAll();
-    }
+        http.requiresChannel()
+          .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
+          .requiresSecure();
+      }
 
 }
