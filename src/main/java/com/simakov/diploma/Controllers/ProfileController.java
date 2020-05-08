@@ -711,7 +711,7 @@ public class ProfileController {
         return new ResponseEntity<Response>(resp, HttpStatus.OK);
     }
 
-    @PostMapping("/test")
+    @GetMapping("/test")
     public ResponseEntity<Response> test() {
         Response resp = new Response();
         resp.setMessage("HERE");
