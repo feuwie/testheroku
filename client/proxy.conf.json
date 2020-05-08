@@ -1,6 +1,6 @@
 {
     "/": {
-        "target": "http://firsthsedipl.herokuapp.com",
+        "target": "http://firsthsedipl.herokuapp.com:8090",
         "secure": false
     }
 }
