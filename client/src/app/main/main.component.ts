@@ -16,7 +16,8 @@ export class MainComponent implements OnInit {
 
     lol() {
         console.log('gere');
-        this.http.get('https://firsthsedipl.herokuapp.com/test').subscribe(res => {
+        this.http.get('https://firsthsedipl.herokuapp.com/api/test').subscribe(res => {
+            console.log('lol');
             console.log(res);
         });
     }
