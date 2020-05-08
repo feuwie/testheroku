@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.2.6.RELEASE</version>
-    <relativePath/>
+    <relativePath />
   </parent>
   <groupId>com.simakov</groupId>
   <artifactId>diploma</artifactId>
@@ -13,7 +13,7 @@
   <name>demo</name>
   <description>Demo project for Spring Boot</description>
   <properties>
-    <java.version>11</java.version>
+    <java.version>1.8</java.version>
   </properties>
   <dependencies>
     <dependency>
@@ -33,6 +33,11 @@
       <artifactId>spring-boot-devtools</artifactId>
       <scope>runtime</scope>
       <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -65,11 +70,11 @@
       <artifactId>stripe-java</artifactId>
       <version>18.16.0</version>
     </dependency>
-    <!-- <dependency>
+    <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <scope>annotationProcessor</scope>
-    </dependency> -->
+    </dependency>
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
@@ -80,6 +85,26 @@
       <artifactId>joda-time</artifactId>
       <version>2.5</version>
     </dependency>
+    <!-- <dependency>
+      <groupId>com.twilio.sdk</groupId>
+      <artifactId>twilio</artifactId>
+      <version>7.20.0</version>
+    </dependency> -->
+    <!-- <dependency>
+      <groupId>com.nexmo</groupId>
+      <artifactId>client</artifactId>
+      <version>5.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.moceanapi</groupId>
+      <artifactId>moceanapisdk</artifactId>
+      <version>1.1.0</version>
+    </dependency> -->
+    <!-- <dependency>
+      <groupId>com.authy</groupId>
+      <artifactId>authy-java</artifactId>
+      <version>1.5.1</version>
+    </dependency> -->
     <dependency>
       <groupId>io.reactivex.rxjava2</groupId>
       <artifactId>rxjava</artifactId>
@@ -100,16 +125,6 @@
           <artifactId>commons-codec</artifactId>
         </exclusion>
       </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <scope>runtime</scope>
     </dependency>
   </dependencies>
   <build>
