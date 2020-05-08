@@ -28,7 +28,7 @@ CREATE TABLE `admin_order` (
   `uuid` varchar(255) DEFAULT NULL,
   `reviewed` int(11) NOT NULL,
   PRIMARY KEY (`adminorder_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `blind` (
   `blind_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -38,7 +38,7 @@ CREATE TABLE `blind` (
   `lineheight` float DEFAULT NULL,
   `uuid` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`blind_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `cart` (
   `cart_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -48,14 +48,14 @@ CREATE TABLE `cart` (
   `promo_id` int(11) NOT NULL,
   `uuid` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`cart_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `category` (
   `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `category_img` varchar(255) DEFAULT NULL,
   `category_title` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`category_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `pers_info` (
   `persinfo_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -71,7 +71,7 @@ CREATE TABLE `pers_info` (
   `phone` varchar(255) DEFAULT NULL,
   `uuid` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`persinfo_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `place_order` (
   `order_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -83,7 +83,7 @@ CREATE TABLE `place_order` (
   `payment_id` varchar(255) DEFAULT NULL,
   `canc_order` int(11) NOT NULL,
   PRIMARY KEY (`order_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `product` (
   `product_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -95,7 +95,7 @@ CREATE TABLE `product` (
   `product_title` varchar(255) DEFAULT NULL,
   `rating` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `promo` (
   `promo_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -103,7 +103,7 @@ CREATE TABLE `promo` (
   `promo_type` varchar(255) DEFAULT NULL,
   `promo_value` int(11) NOT NULL,
   PRIMARY KEY (`promo_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `review` (
   `review_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -113,7 +113,7 @@ CREATE TABLE `review` (
   `product_id` int(11) NOT NULL,
   `review_added` datetime DEFAULT NULL,
   PRIMARY KEY (`review_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `user` (
   `userid` int(11) NOT NULL AUTO_INCREMENT,
@@ -127,7 +127,7 @@ CREATE TABLE `user` (
   `gender` varchar(255) DEFAULT NULL,
   `ban` bit(1) NOT NULL,
   PRIMARY KEY (`userid`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `wishlist` (
   `wishlist_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -135,7 +135,7 @@ CREATE TABLE `wishlist` (
   `uuid` varchar(255) DEFAULT NULL,
   `wish_added` datetime DEFAULT NULL,
   PRIMARY KEY (`wishlist_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=141 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=141 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `admin_order` (`adminorder_id`, `order_id`, `product_id`, `product_quantity`, `uuid`, `reviewed`) VALUES ('64', '49', '4', '5', 'a657c9d3-c0ec-4e9b-a58d-060533d2f8ff', '0'),
 ('65', '50', '4', '4', 'a657c9d3-c0ec-4e9b-a58d-060533d2f8ff', '0'),
